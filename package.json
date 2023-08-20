@@ -7,7 +7,8 @@
     "start": "node server/index.js",
     "backend": "nodemon server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev" : "concurrently \"npm run backend\" \"npm run start --prefix client\""
+    "dev": "concurrently \"npm run backend\" \"npm run start --prefix client\""
+    
   },
   "author": "sung",
   "license": "ISC",
@@ -20,7 +21,9 @@
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^6.9.0"
   },
+  
   "devDependencies": {
+    "gh-pages": "^6.0.0",
     "nodemon": "^2.0.20"
   }
 }
