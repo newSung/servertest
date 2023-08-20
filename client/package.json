@@ -30,7 +30,6 @@
       "react-app/jest"
     ]
   },
-  "homepage": "http://newSung.github.io/DiaryWeb",
   "browserslist": {
     "production": [
       ">0.2%",
