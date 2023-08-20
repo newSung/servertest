@@ -24,6 +24,8 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
+  "homepage": "http://newsung.github.io/WebProject"
+,
   "eslintConfig": {
     "extends": [
       "react-app",
