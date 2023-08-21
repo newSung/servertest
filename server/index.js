@@ -15,7 +15,16 @@ const cookieParser = require('cookie-parser')
 
 const { auth } = require("./middleware/auth")
 
-app.use(cors({ origin: 'https://genuine-sprinkles-f38be6.netlify.app/' }));
+const allowedOrigins = ['https://genuine-sprinkles-f38be6.netlify.app'];
+app.use(cors({
+    origin: (origin, callback) => {
+        if (allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    }
+}));
 
 //application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
