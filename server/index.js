@@ -15,9 +15,15 @@ const cookieParser = require('cookie-parser')
 
 const { auth } = require("./middleware/auth")
 
-const allowedOrigins = ['https://genuine-sprinkles-f38be6.netlify.app'];
+const allowedOrigins = ['https://gregarious-meerkat-c611cb.netlify.app'];
 app.use(cors({
-    origin: '*', // 모든 출처 허용 옵션. true 를 써도 된다.
+    origin: (origin, callback) => {
+        if (allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    }
 }));
 
 //application/x-www-form-urlencoded
