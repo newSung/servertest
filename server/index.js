@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express')
 const app = express()
-const port = 3000
+const port = 5000
 
 const cors = require('cors')
 
@@ -15,7 +15,7 @@ const cookieParser = require('cookie-parser')
 
 const { auth } = require("./middleware/auth")
 
-app.use(cors())
+app.use(cors({ origin: 'https://genuine-sprinkles-f38be6.netlify.app', }));
 
 //application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -52,7 +52,7 @@ app.post('/api/users/register', (req, res) => {
     })
 })
 //로그인
-app.post('app/api/users/login', (req, res) => {
+app.post('/api/users/login', (req, res) => {
     //요청된 이메일을 데이터베이스에서 있는지 확인
     User.findOne({ email: req.body.email }, (err, user) => {
         if (!user) {
