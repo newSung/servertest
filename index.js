@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express')
 const app = express()
 const port = 5000
-const { createProxyMiddleware } = require('http-proxy-middleware');
+const cors = require('cors')
 
 const { User } = require("./server/models/User");
 const { Diary } = require("./server/models/Diary");
@@ -11,12 +11,12 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser')
 
 // const config = require('./config/key')
-app.use('/api', createProxyMiddleware({ target: 'https://gregarious-meerkat-c611cb.netlify.app', changeOrigin: true }));
+
 const { auth } = require("./server/middleware/auth")
 
-// app.use(cors({
-//     origin: 'https://gregarious-meerkat-c611cb.netlify.app',
-// }));
+app.use(cors({
+    origin: 'https://gregarious-meerkat-c611cb.netlify.app',
+}));
 
 
 
