@@ -1,6 +1,9 @@
+require('dotenv').config();
 const express = require('express')
 const app = express()
 const port = 3000
+
+const cors = require('cors')
 
 const { User } = require("./models/User");
 const { Diary } = require("./models/Diary");
@@ -8,9 +11,11 @@ const { Frequest } = require("./models/FriendRequest");
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser')
 
-const config = require('./config/key')
+// const config = require('./config/key')
 
 const { auth } = require("./middleware/auth")
+
+app.use(cors())
 
 //application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -23,8 +28,8 @@ app.use(cookieParser());
 
 const mongoose = require('mongoose')
 //mongoose.set('strictQuery', true);
-
-mongoose.connect(config.mongoURI, {
+// mongoose.connect(config.mongoURI, {
+mongoose.connect(process.env.mongoURI, {
     useNewUrlParser: true, useUnifiedTopology: true
 }).then(() => console.log('db connected'))
     .catch(err => console.log(err))
@@ -47,7 +52,7 @@ app.post('/api/users/register', (req, res) => {
     })
 })
 //로그인
-app.post('/api/users/login', (req, res) => {
+app.post('app/api/users/login', (req, res) => {
     //요청된 이메일을 데이터베이스에서 있는지 확인
     User.findOne({ email: req.body.email }, (err, user) => {
         if (!user) {
