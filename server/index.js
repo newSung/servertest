@@ -2,7 +2,6 @@ require('dotenv').config();
 const express = require('express')
 const app = express()
 const port = 5000
-const cors = require('cors')
 
 const { User } = require("./models/User");
 const { Diary } = require("./models/Diary");
@@ -14,9 +13,13 @@ const cookieParser = require('cookie-parser')
 
 const { auth } = require("./middleware/auth")
 
-app.use(cors({
-    origin: 'https://gregarious-meerkat-c611cb.netlify.app',
-}));
+// app.use(cors({
+//     origin: 'https://gregarious-meerkat-c611cb.netlify.app',
+// }));
+
+app.use((req, res) => {
+    res.header("Access-Control-Allow-Origin", "https://gregarious-meerkat-c611cb.netlify.app"); // 특정 도메인 허용
+});
 
 //application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
