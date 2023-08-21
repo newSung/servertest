@@ -42,7 +42,7 @@ app.get('/', (req, res) => { res.send('hellossssssssssssssss world') })
 
 //test
 app.get('/api/test', (req, res) => {
-    res.send('test success')
+    return res.json({ text: 'test success' })
 })
 
 //회원가입
