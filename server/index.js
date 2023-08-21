@@ -15,14 +15,7 @@ const cookieParser = require('cookie-parser')
 
 const { auth } = require("./middleware/auth")
 
-const allowedOrigins = ['https://gregarious-meerkat-c611cb.netlify.app',
-    'https://gregarious-meerkat-c611cb.netlify.app/'];
-app.use(cors({
-    origin: [
-        'http://localhost:3000',
-        'https://gregarious-meerkat-c611cb.netlify.app/'
-    ]
-}));
+app.use(cors())
 
 //application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
