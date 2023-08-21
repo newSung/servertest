@@ -4,15 +4,15 @@ const app = express()
 const port = 5000
 const { createProxyMiddleware } = require('http-proxy-middleware');
 
-const { User } = require("./models/User");
-const { Diary } = require("./models/Diary");
-const { Frequest } = require("./models/FriendRequest");
+const { User } = require("./server/models/User");
+const { Diary } = require("./server/models/Diary");
+const { Frequest } = require("./server/models/FriendRequest");
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser')
 
 // const config = require('./config/key')
 app.use('/api', createProxyMiddleware({ target: 'https://gregarious-meerkat-c611cb.netlify.app', changeOrigin: true }));
-const { auth } = require("./middleware/auth")
+const { auth } = require("./server/middleware/auth")
 
 // app.use(cors({
 //     origin: 'https://gregarious-meerkat-c611cb.netlify.app',
