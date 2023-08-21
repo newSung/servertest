@@ -2,8 +2,7 @@ require('dotenv').config();
 const express = require('express')
 const app = express()
 const port = 5000
-
-const cors = require('cors');
+const cors = require('cors')
 
 const { User } = require("./models/User");
 const { Diary } = require("./models/Diary");
@@ -15,16 +14,12 @@ const cookieParser = require('cookie-parser')
 
 const { auth } = require("./middleware/auth")
 
-const allowedOrigins = ['https://gregarious-meerkat-c611cb.netlify.app'];
-app.use(cors({
-    origin: (origin, callback) => {
-        if (allowedOrigins.includes(origin)) {
-            callback(null, true);
-        } else {
-            callback(new Error('Not allowed by CORS'));
-        }
-    }
-}));
+let corsOptions = {
+    origin: '*',      // 출처 허용 옵션
+    credential: true, // 사용자 인증이 필요한 리소스(쿠키 등) 접근
+}
+
+app.use(cors(corsOptions))
 
 //application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
