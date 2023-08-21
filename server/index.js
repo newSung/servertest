@@ -40,6 +40,10 @@ mongoose.connect(process.env.mongoURI, {
 
 app.get('/', (req, res) => { res.send('hellossssssssssssssss world') })
 
+//test
+app.get('/api/test', (req, res) => {
+    res.send('test success')
+})
 
 //회원가입
 app.post('/api/users/register', (req, res) => {
