@@ -3,7 +3,7 @@ const express = require('express')
 const app = express()
 const port = 5000
 
-const cors = require('cors')
+const cors = require('cors');
 
 const { User } = require("./models/User");
 const { Diary } = require("./models/Diary");
@@ -15,7 +15,7 @@ const cookieParser = require('cookie-parser')
 
 const { auth } = require("./middleware/auth")
 
-app.use(cors({ origin: 'https://genuine-sprinkles-f38be6.netlify.app', }));
+app.use(cors({ origin: 'https://genuine-sprinkles-f38be6.netlify.app/' }));
 
 //application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -36,6 +36,7 @@ mongoose.connect(process.env.mongoURI, {
 
 
 app.get('/', (req, res) => { res.send('hellossssssssssssssss world') })
+
 
 //회원가입
 app.post('/api/users/register', (req, res) => {
