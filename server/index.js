@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express')
 const app = express()
-const port = 3000
+const port = 5000
 
 const cors = require('cors')
 
@@ -52,7 +52,7 @@ app.post('/api/users/register', (req, res) => {
     })
 })
 //로그인
-app.post('app/api/users/login', (req, res) => {
+app.post('/api/users/login', (req, res) => {
     //요청된 이메일을 데이터베이스에서 있는지 확인
     User.findOne({ email: req.body.email }, (err, user) => {
         if (!user) {
