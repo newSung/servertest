@@ -15,18 +15,18 @@ const cookieParser = require('cookie-parser')
 const { auth } = require("./server/middleware/auth")
 
 //배포
-app.use(cors({
-    origin: 'https://genuine-sprinkles-f38be6.netlify.app',
-    credentials: true
-}));
+// app.use(cors({
+//     origin: 'https://genuine-sprinkles-f38be6.netlify.app',
+//     credentials: true
+// }));
 
-// app.use((req, res, next) => {
-//     res.header("Access-Control-Allow-Origin", "https://genuine-sprinkles-f38be6.netlify.app");
-//     res.header("Access-Control-Allow-Credentials", true);
-//     res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//     next();
-// });
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "https://genuine-sprinkles-f38be6.netlify.app");
+    res.header("Access-Control-Allow-Credentials", true);
+    res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
 
 //로컬
 // app.use(cors({
