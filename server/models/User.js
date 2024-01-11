@@ -32,8 +32,7 @@ const userSchema = mongoose.Schema({
         type: Number
     },
     friends: [{
-        type: String,
-        unique: true
+        type: String
     }]
 })
 

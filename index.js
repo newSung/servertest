@@ -14,8 +14,14 @@ const cookieParser = require('cookie-parser')
 
 const { auth } = require("./server/middleware/auth")
 
+//배포
+app.use(cors({
+    origin: 'https://gregarious-meerkat-c611cb.netlify.app',
+}));
+
+//로컬
 // app.use(cors({
-//     origin: 'https://gregarious-meerkat-c611cb.netlify.app',
+//     origin: 'http://localhost:3000',
 // }));
 app.use(cors())
 
@@ -52,9 +58,12 @@ app.post('/api/users/register', (req, res) => {
     //회원가입 정보를 client에서 데이터베이스에 전달
 
     const user = new User(req.body)
-
+    console.log(user)
     user.save((err, userInfo) => {
-        if (err) return res.json({ success: false, err })
+        if (err) {
+            console.log(err)
+            return res.json({ success: false, err })
+        }
         return res.status(200).json({
             success: true
         })
