@@ -16,6 +16,7 @@ const { auth } = require("./server/middleware/auth")
 
 //배포
 app.use(cors({
+    credentials: true,
     origin: 'https://genuine-sprinkles-f38be6.netlify.app',
 }));
 
