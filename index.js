@@ -20,6 +20,14 @@ app.use(cors({
     origin: 'https://genuine-sprinkles-f38be6.netlify.app',
 }));
 
+// app.use((req, res, next) => {
+//     res.header("Access-Control-Allow-Origin", "https://genuine-sprinkles-f38be6.netlify.app");
+//     res.header("Access-Control-Allow-Credentials", true);
+//     res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//     next();
+// });
+
 //로컬
 // app.use(cors({
 //     origin: 'http://localhost:3000',
@@ -91,7 +99,10 @@ app.post('/api/users/login', (req, res) => {
                 if (err) return res.status(400).send(err);
 
                 //토큰을 저장한다. 어디에? 쿠키 ,로컬스토리지
-                res.cookie("x_auth", user.token)
+                res.cookie("x_auth", user.token, {
+                    sameSite: 'None',
+                    secure: true,
+                })
                     .status(200)
                     .json({ loginSuccess: true, userId: user._id })
             })
