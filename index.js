@@ -54,7 +54,7 @@ app.use(cookieParser());
 //     .catch(err => console.log(err))
 
 const { MongoClient, ServerApiVersion } = require('mongodb');
-const uri = "mongodb+srv://chat:D0101oCMiUb9m419@cluster0.aj12u.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const uri = "mongodb+srv://sung:D0101oCMiUb9m419@cluster0.svu7zl4.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
   serverApi: {
